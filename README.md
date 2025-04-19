@@ -14,14 +14,14 @@ Sebuah aplikasi desktop untuk mengelola peminjaman buku di perpustakaan mengguna
 - ✅ Tambah buku baru
 - ✏️ Edit informasi buku
 - ❌ Hapus buku
-- 🔍 Cari buku berdasarkan judul/pengarang
+- 🔍 Cari buku berdasarkan judul/pengarang (belum ada)
 - 📋 Tampilkan daftar buku lengkap
 - ⚠️ Validasi input (stok tidak boleh negatif)
 
 ### 3. Manajemen User (Admin Only)
-- 👥 Tambah user baru (admin/user)
-- 📝 Edit data user
-- 🗑️ Hapus user
+- 👥 Tambah user baru (admin/user) (belum ada)
+- 📝 Edit data user (belum ada)
+- 🗑️ Hapus user (belum ada)
 
 ### 4. Peminjaman Buku
 - 📥 Proses peminjaman (otomatis kurangi stok)
