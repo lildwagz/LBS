@@ -4,7 +4,7 @@ Sebuah aplikasi desktop untuk mengelola peminjaman buku di perpustakaan mengguna
 
 ## 📚 Fitur yang Tersedia
 
-### 1. Sistem Autentikasi
+### 1. Sistem Autentikasi [ Laude ]
 - **Login** dengan dua role:
   - **Admin**: Akses penuh ke semua fitur
   - **User**: Hanya bisa meminjam dan melihat riwayat
@@ -15,13 +15,13 @@ Sebuah aplikasi desktop untuk mengelola peminjaman buku di perpustakaan mengguna
 - ✏️ Edit informasi buku
 - ❌ Hapus buku
 - 🔍 Cari buku berdasarkan judul/pengarang (belum ada)
-- 📋 Tampilkan daftar buku lengkap
+- 📋 Tampilkan daftar buku lengkap [ ammar ] 
 - ⚠️ Validasi input (stok tidak boleh negatif)
 
-### 3. Manajemen User (Admin Only)
+### 3. Manajemen User (Admin Only)  [ Iqbal] 
 - 👥 Tambah user baru (admin/user) (belum ada)
-- 📝 Edit data user (belum ada)
-- 🗑️ Hapus user (belum ada)
+- 📝 Edit data user 
+- 🗑️ Hapus user 
 
 ### 4. Peminjaman Buku
 - 📥 Proses peminjaman (otomatis kurangi stok)
@@ -35,6 +35,35 @@ Sebuah aplikasi desktop untuk mengelola peminjaman buku di perpustakaan mengguna
 - 💬 Dialog konfirmasi dan error
 - 🎨 Tema dasar (belum ada dark mode)
 
+## 🚧 Rencana Pengembangan (Fitur yang Akan Datang)
+
+### 1. Sistem Denda Otomatis
+- ⏰ Perhitungan denda keterlambatan
+- 💰 Manajemen pembayaran denda
+- 📆 Kalender jatuh tempo
+
+### 2. Sistem Reservasi Buku
+- 🗓️ Antrian reservasi buku
+- 🔔 Notifikasi ketersediaan buku
+- ⚠️ Batas waktu pengambilan reservasi
+
+### 3. Laporan Lanjutan
+- 📈 Statistik peminjaman (grafik bulanan/tahunan)
+- 📉 Analisis buku populer
+- 📊 Laporan PDF/Excel
+
+### 4. Keamanan Enhanced
+- 🔒 Reset password via email
+- 🔑 Validasi kekuatan password
+- 📜 Audit log aktivitas sistem
+
+### 5. Fitur Tambahan
+- 🔄 Batch import/export data
+- 🌓 Dark mode toggle
+- 📱 Responsive layout improvement
+- 🔍 Pencarian multi-kriteria
+
+  
 ## 🛠️ Teknologi Digunakan
 - **Frontend**: Java Swing
 - **Backend**: MySQL
@@ -49,3 +78,6 @@ Sebuah aplikasi desktop untuk mengelola peminjaman buku di perpustakaan mengguna
 - Java JDK 8+
 - MySQL Server 5.7+
 - IDE (Eclipse/IntelliJ)
+
+## 📄 Lisensi
+MIT License - Lihat [LICENSE](LICENSE) untuk detail
