@@ -28,12 +28,60 @@ Sebuah aplikasi desktop untuk mengelola peminjaman buku di perpustakaan mengguna
 - 📤 Pengembalian buku (update status & stok)
 - 📋 Riwayat peminjaman per user
 - ⏳ Tampilkan buku yang sedang dipinjam
+  
+### 5. Laporan Lanjutan 
+- **Filter Tanggal**  
+  Date picker untuk rentang tanggal mulai dan akhir
+- **Filter Status**  
+  Dropdown pilihan: Semua Status/Dipinjam/Dikembalikan
+- **Filter Buku**  
+  Dropdown otomatis terisi judul buku dari database
+- **Filter Pengguna**  
+  Dropdown otomatis terisi username pengguna
+- **Tombol Aksi**  
+  - Terapkan Filter
+  - Reset Filter
+  - Ekspor PDF (Coming Soon)
+### 6. **Visualisasi Data Interaktif**
+#### a. Tren Bulanan (Bar Chart)
+![Bar Chart](screenshots/bar-chart.png)
+- Menampilkan fluktuasi peminjaman per bulan
+- Fitur interaktif:
+  - Zoom & pan dengan mouse
+  - Tooltip detail per bulan
+  - Auto-scaling axis
 
-### 5. Antarmuka Pengguna
+#### b. Distribusi Status (Pie Chart)
+![Pie Chart](screenshots/pie-chart.png)
+- Perbandingan persentase status peminjaman
+- Informasi tambahan:
+  - Total buku dipinjam
+  - Detail per kategori:
+    - Jumlah buku
+    - Persentase
+  - Warna berbeda tiap kategori
+
+### 7. **Tabel Data Peminjaman**
+![Data Table](screenshots/data-table.png)
+- Kolom informasi:
+  - ID Transaksi
+  - Judul Buku
+  - Username Peminjam
+  - Tanggal Pinjam/Kembali
+  - Durasi Peminjaman
+  - Status
+- Fitur:
+  - Sorting kolom
+  - Auto-resize kolom
+  - Scroll horizontal/vertikal
+  - Responsive layout
+    
+### 8. Antarmuka Pengguna
 - 🖥️ Dashboard admin dengan tabel interaktif
 - 📱 Responsive layout dasar
 - 💬 Dialog konfirmasi dan error
 - 🎨 Tema dasar (belum ada dark mode)
+- Background Processing - Load data tanpa freeze UI
 
 ## 🚧 Rencana Pengembangan (Fitur yang Akan Datang)
 
@@ -68,9 +116,12 @@ Sebuah aplikasi desktop untuk mengelola peminjaman buku di perpustakaan mengguna
 - **Frontend**: Java Swing
 - **Backend**: MySQL
 - **Arsitektur**: MVC Pattern
+- **SwingWorker** - Background threading
 - **Libraries**: 
   - MySQL Connector/J
   - JDBC untuk koneksi database
+  - JFreeChart 1.5.3
+
 
 ## 🚀 Panduan Instalasi
 
@@ -78,6 +129,19 @@ Sebuah aplikasi desktop untuk mengelola peminjaman buku di perpustakaan mengguna
 - Java JDK 8+
 - MySQL Server 5.7+
 - IDE (Eclipse/IntelliJ)
+
+1. Clone repositori:
+   ```bash
+   git clone https://github.com/lildwagz/LBS.git
+   ```
+2. Import ke IDE (IntelliJ/Eclipse)
+3. Setup database:
+
+```bash
+CREATE DATABASE library;
+USE library;
+-- Jalankan script SQL dari file perpustakaan.sql
+```
 
 ## 📄 Lisensi
 MIT License - Lihat [LICENSE](LICENSE) untuk detail
