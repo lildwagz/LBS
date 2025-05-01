@@ -138,8 +138,8 @@ Sebuah aplikasi desktop untuk mengelola peminjaman buku di perpustakaan mengguna
 3. Setup database:
 
 ```bash
-CREATE DATABASE library;
-USE library;
+CREATE DATABASE perpustakaan;
+USE perpustakaan;
 -- Jalankan script SQL dari file perpustakaan.sql
 ```
 
