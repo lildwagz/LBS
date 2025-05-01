@@ -29,7 +29,7 @@ Sebuah aplikasi desktop untuk mengelola peminjaman buku di perpustakaan mengguna
 - 📋 Riwayat peminjaman per user
 - ⏳ Tampilkan buku yang sedang dipinjam
   
-### 5. Laporan Lanjutan 
+### 5. Laporan Lanjutan (Amin Only) [Azzam]
 - **Filter Tanggal**  
   Date picker untuk rentang tanggal mulai dan akhir
 - **Filter Status**  
@@ -42,7 +42,8 @@ Sebuah aplikasi desktop untuk mengelola peminjaman buku di perpustakaan mengguna
   - Terapkan Filter
   - Reset Filter
   - Ekspor PDF (Coming Soon)
-### 6. **Visualisasi Data Interaktif**
+  - 
+### 6. **Visualisasi Data Interaktif** (Amin Only) [Azzam]
 #### a. Tren Bulanan (Bar Chart)
 ![Bar Chart](screenshots/bar-chart.png)
 - Menampilkan fluktuasi peminjaman per bulan
@@ -51,7 +52,7 @@ Sebuah aplikasi desktop untuk mengelola peminjaman buku di perpustakaan mengguna
   - Tooltip detail per bulan
   - Auto-scaling axis
 
-#### b. Distribusi Status (Pie Chart)
+#### b. Distribusi Status (Pie Chart) (Amin Only) [Azzam]
 ![Pie Chart](screenshots/pie-chart.png)
 - Perbandingan persentase status peminjaman
 - Informasi tambahan:
@@ -61,7 +62,7 @@ Sebuah aplikasi desktop untuk mengelola peminjaman buku di perpustakaan mengguna
     - Persentase
   - Warna berbeda tiap kategori
 
-### 7. **Tabel Data Peminjaman**
+### 7. **Tabel Data Peminjaman** (Amin Only) [Azzam]
 ![Data Table](screenshots/data-table.png)
 - Kolom informasi:
   - ID Transaksi
@@ -95,20 +96,14 @@ Sebuah aplikasi desktop untuk mengelola peminjaman buku di perpustakaan mengguna
 - 🔔 Notifikasi ketersediaan buku
 - ⚠️ Batas waktu pengambilan reservasi
 
-### 3. Laporan Lanjutan
-- 📈 Statistik peminjaman (grafik bulanan/tahunan)
-- 📉 Analisis buku populer
-- 📊 Laporan PDF/Excel
-
-### 4. Keamanan Enhanced
+### 3. Keamanan Enhanced
 - 🔒 Reset password via email
 - 🔑 Validasi kekuatan password
 - 📜 Audit log aktivitas sistem
 
-### 5. Fitur Tambahan
+### 4. Fitur Tambahan
 - 🔄 Batch import/export data
 - 🌓 Dark mode toggle
-- 📱 Responsive layout improvement
 - 🔍 Pencarian multi-kriteria
 
   
