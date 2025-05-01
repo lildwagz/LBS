@@ -143,5 +143,14 @@ USE library;
 -- Jalankan script SQL dari file perpustakaan.sql
 ```
 
+4. Configurasi Database
+   Buka file src/util/DBConnection.java, dan ubahlah parameter dengan kebutuhan
+
+   ```bash
+   private static final String URL = "jdbc:mysql://localhost:3306/perpustakaan";
+    private static final String USER = "root";
+    private static final String PASS = "root";
+   ```
+
 ## 📄 Lisensi
 MIT License - Lihat [LICENSE](LICENSE) untuk detail
