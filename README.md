@@ -4,7 +4,7 @@ Sebuah aplikasi desktop untuk mengelola peminjaman buku di perpustakaan mengguna
 
 ## 📚 Fitur yang Tersedia
 
-### 1. Sistem Autentikasi [ Laude ]
+### 1. Sistem Autentikasi [ Laude fitur registrasi]
 - **Login** dengan dua role:
   - **Admin**: Akses penuh ke semua fitur
   - **User**: Hanya bisa meminjam dan melihat riwayat
@@ -15,13 +15,14 @@ Sebuah aplikasi desktop untuk mengelola peminjaman buku di perpustakaan mengguna
 - ✏️ Edit informasi buku
 - ❌ Hapus buku
 - 🔍 Cari buku berdasarkan judul/pengarang (belum ada)
-- 📋 Tampilkan daftar buku lengkap [ ammar ] 
+- 📋 Tampilkan daftar buku lengkap 
 - ⚠️ Validasi input (stok tidak boleh negatif)
 
-### 3. Manajemen User (Admin Only)  [ Iqbal] 
-- 👥 Tambah user baru (admin/user) (belum ada)
-- 📝 Edit data user 
-- 🗑️ Hapus user 
+### 3. Manajemen User (Admin Only)  
+- 👥 Tambah user baru (admin/user) (belum ada)[ Iqbal] di file components/UserTable
+- 📝 Edit data user  [ ammar ] di file components/UserTable
+- 🗑️ Hapus user [ gatan ] di file components/UserTable
+- 🔍 search user [yudistira] di file components/UserTable
 
 ### 4. Peminjaman Buku
 - 📥 Proses peminjaman (otomatis kurangi stok)
