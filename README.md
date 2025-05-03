@@ -138,6 +138,8 @@ CREATE DATABASE perpustakaan;
 USE perpustakaan;
 -- Jalankan script SQL dari file perpustakaan.sql
 ```
+kemudian run file db.sql untuk menambahkan data dummy
+
 
 4. Configurasi Database
    Buka file src/util/DBConnection.java, dan ubahlah parameter dengan kebutuhan
