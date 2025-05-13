@@ -25,6 +25,7 @@ public class BookController {
     public void addBook(Book book) throws CustomException {
         try {
             if(bookDAO.isBookExist(book)) {
+
                 throw new CustomException("Buku sudah ada di sistem!\n" +
                         "Judul+Pengarang tidak boleh sama dengan buku yang sudah ada");
             }
@@ -40,23 +41,28 @@ public class BookController {
     public void updateBook(Book book) throws CustomException {
         try {
             if(bookDAO.isBookExist(book)) {
-                throw new CustomException("Buku sudah ada di sistem!\n" +
-                        "Judul+Pengarang tidak boleh sama dengan buku yang sudah ada");
+                if(!bookDAO.updateBook(book)) {
+                    throw new CustomException("Gagal memperbarui buku");
+                }
             }
-            if(!bookDAO.updateBook(book)) {
-                throw new CustomException("Gagal memperbarui buku");
-            }
+
+
         } catch (Exception e) {
             throw new CustomException("Error: " + e.getMessage());
         }
     }
 
     // Method untuk menghapus buku
-    public void deleteBook(int id) throws CustomException {
+    public void deleteBook(Book book) throws CustomException {
         try {
-            if(!bookDAO.deleteBook(id)) {
-                throw new CustomException("Gagal menghapus buku");
+            if(bookDAO.isPeminjamanBookExist(book)) {
+                throw new CustomException("buku dalam transaksi pemminjaman");
+
             }
+            if(!bookDAO.deleteBook(book.getId())) {
+                throw new CustomException("Gagal menambahkan buku");
+            }
+
         } catch (Exception e) {
             throw new CustomException("Error: " + e.getMessage());
         }
