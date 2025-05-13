@@ -105,7 +105,7 @@ public class BookTablePanel extends JPanel {
     }
 
     private void handleAddBook(ActionEvent e) {
-        BookFormDialog dialog = new BookFormDialog((JFrame) SwingUtilities.getWindowAncestor(this));
+        BookFormDialog dialog = new BookFormDialog((JFrame) SwingUtilities.getWindowAncestor(this.getParent()));
         dialog.setVisible(true);
 
         if (dialog.isSubmitted()) {

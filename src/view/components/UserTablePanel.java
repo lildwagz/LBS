@@ -2,6 +2,7 @@ package view.components;
 
 import controller.UserController;
 import exception.CustomException;
+import model.Book;
 import model.User;
 import util.TableHelper;
 import javax.swing.*;
@@ -19,7 +20,7 @@ public class UserTablePanel extends JPanel {
         initUI();
         loadData();
     }
-
+    // deklarasikan UI
     private void initUI() {
         setLayout(new BorderLayout());
 
@@ -85,7 +86,8 @@ public class UserTablePanel extends JPanel {
     }
 // ------------------------>block kode untuk iqbal fitur nambah user ---------------->
     private void handleAddUser(ActionEvent e) {
-        // Open add user dialog
+
+
     }
 
     // ------------------------>block kode untuk ammar fitur nambah user ---------------->
@@ -93,9 +95,10 @@ public class UserTablePanel extends JPanel {
     private void handleEditUser(ActionEvent e) {
         int selectedRow = table.getSelectedRow();
         if(selectedRow < 0) {
+
             return;
         }
-        int userId = (int) table.getValueAt(selectedRow, 0);
+
 
 
     }
