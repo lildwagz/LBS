@@ -85,8 +85,25 @@ public class UserTablePanel extends JPanel {
 
     }
 // ------------------------>block kode untuk iqbal fitur nambah user ---------------->
-    private void handleAddUser(ActionEvent e) {
+    private void handleAddUser(ActionEvent e)
+    {
+        UserFormDialog dialog = new UserFormDialog((JFrame) SwingUtilities.getWindowAncestor(this));
+        dialog.setVisible(true);
 
+        if (dialog.isSubmitted()) {
+            try {
+                User newUser = dialog.getUser();
+                // Validasi Manual
+                if(newUser.getUsername().isEmpty() || newUser.getPassword().isEmpty()) {
+                    throw new CustomException("Username harus di isi!");
+                }
+                userController.addUser(newUser);
+                loadData(); // Refresh table
+                showSuccessDialog("User berhasil ditambahkan!");
+            } catch (CustomException ex) {
+                showErrorDialog("Gagal menambahkan User: " + ex.getMessage());
+            }
+        }
 
     }
 
