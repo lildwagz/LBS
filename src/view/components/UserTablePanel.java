@@ -2,6 +2,7 @@ package view.components;
 
 import controller.UserController;
 import exception.CustomException;
+import model.Book;
 import model.User;
 import util.TableHelper;
 import javax.swing.*;
@@ -19,7 +20,7 @@ public class UserTablePanel extends JPanel {
         initUI();
         loadData();
     }
-
+    // deklarasikan UI
     private void initUI() {
         setLayout(new BorderLayout());
 
@@ -84,8 +85,26 @@ public class UserTablePanel extends JPanel {
 
     }
 // ------------------------>block kode untuk iqbal fitur nambah user ---------------->
-    private void handleAddUser(ActionEvent e) {
-        // Open add user dialog
+    private void handleAddUser(ActionEvent e)
+    {
+        UserFormDialog dialog = new UserFormDialog((JFrame) SwingUtilities.getWindowAncestor(this));
+        dialog.setVisible(true);
+
+        if (dialog.isSubmitted()) {
+            try {
+                User newUser = dialog.getUser();
+                // Validasi Manual
+                if(newUser.getUsername().isEmpty() || newUser.getPassword().isEmpty()) {
+                    throw new CustomException("Username harus di isi!");
+                }
+                userController.addUser(newUser);
+                loadData(); // Refresh table
+                showSuccessDialog("User berhasil ditambahkan!");
+            } catch (CustomException ex) {
+                showErrorDialog("Gagal menambahkan User: " + ex.getMessage());
+            }
+        }
+
     }
 
     // ------------------------>block kode untuk ammar fitur nambah user ---------------->
@@ -93,9 +112,10 @@ public class UserTablePanel extends JPanel {
     private void handleEditUser(ActionEvent e) {
         int selectedRow = table.getSelectedRow();
         if(selectedRow < 0) {
+
             return;
         }
-        int userId = (int) table.getValueAt(selectedRow, 0);
+
 
 
     }

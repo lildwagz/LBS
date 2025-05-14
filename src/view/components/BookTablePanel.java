@@ -105,7 +105,7 @@ public class BookTablePanel extends JPanel {
     }
 
     private void handleAddBook(ActionEvent e) {
-        BookFormDialog dialog = new BookFormDialog((JFrame) SwingUtilities.getWindowAncestor(this));
+        BookFormDialog dialog = new BookFormDialog((JFrame) SwingUtilities.getWindowAncestor(this.getParent()));
         dialog.setVisible(true);
 
         if (dialog.isSubmitted()) {
@@ -163,7 +163,7 @@ public class BookTablePanel extends JPanel {
 
         int confirm = JOptionPane.showConfirmDialog(
                 this,
-                "Apakah Anda yakin ingin menghapus buku ini?",
+                "Apakah Anda yakin ingin menghapus buku ini?\nini akan menghapus semua history peminjaman pada buku ini",
                 "Konfirmasi Hapus",
                 JOptionPane.YES_NO_OPTION
         );
@@ -171,7 +171,9 @@ public class BookTablePanel extends JPanel {
         if (confirm == JOptionPane.YES_OPTION) {
             try {
                 int bookId = (int) bookTable.getValueAt(selectedRow, 0);
-                bookController.deleteBook(bookId);
+                Book existingBook = bookController.getBookById(bookId);
+
+                bookController.deleteBook(existingBook);
                 loadData(); // Refresh table
                 showSuccessDialog("Buku berhasil dihapus!");
             } catch (CustomException ex) {

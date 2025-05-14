@@ -96,7 +96,7 @@ public class BookFormDialog extends JDialog {
             return false;
         }
 
-        if ((int) spnYear.getValue() < 1900) {
+        if ((int) spnYear.getValue() < 1800) {
             showValidationError("Invalid publication year");
             return false;
         }

@@ -98,6 +98,8 @@ public class BookDAO {
             stmt.setInt(4, book.getTahunTerbit());
             stmt.setInt(5, book.getId());
 
+            System.out.println("Debug - Query: " + stmt);
+
             return stmt.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -108,6 +110,7 @@ public class BookDAO {
     // Method untuk menghapus buku
     public boolean deleteBook(int id) {
         String sql = "DELETE FROM books WHERE id = ?";
+
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
@@ -118,6 +121,7 @@ public class BookDAO {
         }
         return false;
     }
+
 
     // Method untuk mendapatkan stok buku
     public int getBookStock(int bookId) {
@@ -164,6 +168,24 @@ public class BookDAO {
         }
         return false;
     }
+    public boolean isPeminjamanBookExist(Book book) {
+        String sql = "SELECT COUNT(*) count FROM peminjaman  WHERE book_id = ? and status = ?";
+
+        try(Connection conn = DBConnection.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, book.getId());
+            stmt.setString(2, "dipinjam");
+            ResultSet rs = stmt.executeQuery();
+            if(rs.next()) {
+                return rs.getInt(1) > 0;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
 
     // method untuk mengecek apakah buku sudah ada di database
     public boolean isBookExist(Book book) {
@@ -176,6 +198,7 @@ public class BookDAO {
             stmt.setString(2, book.getPengarang());
 
             ResultSet rs = stmt.executeQuery();
+            System.out.println("Debug : "+stmt.toString());
             if(rs.next()) {
                 return rs.getInt(1) > 0;
             }
