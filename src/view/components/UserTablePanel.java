@@ -111,14 +111,44 @@ public class UserTablePanel extends JPanel {
 
     private void handleEditUser(ActionEvent e) {
         int selectedRow = table.getSelectedRow();
-        if(selectedRow < 0) {
-
+        if (selectedRow < 0) {
+            showWarningDialog("Silakan pilih user yang ingin diedit.");
             return;
         }
 
+        try {
+            // Ambil data dari baris yang dipilih
+            int userId = (int) table.getValueAt(selectedRow, 0);
+            String username = (String) table.getValueAt(selectedRow, 1);
+            String role = (String) table.getValueAt(selectedRow, 2);
 
+            // Buat objek user dari data yang dipilih
+            User selectedUser = new User();
+            selectedUser.setId(userId);
+            selectedUser.setUsername(username);
+            selectedUser.setRole(role);
 
+            // Tampilkan dialog untuk edit user
+            UserFormDialog dialog = new UserFormDialog((JFrame) SwingUtilities.getWindowAncestor(this), selectedUser);
+            dialog.setVisible(true);
+
+            if (dialog.isSubmitted()) {
+                User updatedUser = dialog.getUser();
+                // Validasi manual
+                if (updatedUser.getUsername().isEmpty()) {
+                    throw new CustomException("Username tidak boleh kosong.");
+                }
+
+                userController.updateUser(updatedUser);
+                loadData(); // Refresh table
+                showSuccessDialog("User berhasil diperbarui!");
+            }
+
+        } catch (CustomException ex) {
+            showErrorDialog("Gagal mengedit User: " + ex.getMessage());
+        }
     }
+
 
 // ---------------------------------------->> block kode untuk gatan
     private void handleDeleteUser(ActionEvent e) {
