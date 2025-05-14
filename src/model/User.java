@@ -15,11 +15,8 @@ public class User {
 
     }
 
-<<<<<<< HEAD
     public User () {
-=======
-    public User() {
->>>>>>> 8fee44f9b4fb109949b17b73c43853a23d062c8e
+
 
     }
 
