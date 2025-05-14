@@ -15,6 +15,10 @@ public class User {
 
     }
 
+    public User () {
+
+    }
+
 
     // Getters and Setters
     public int getId() { return id; }
