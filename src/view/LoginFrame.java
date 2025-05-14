@@ -118,6 +118,7 @@ public class LoginFrame extends JFrame {
     private void showRegistrationForm(ActionEvent e) {
         RegisterFrame registerFrame = new RegisterFrame();
         registerFrame.setVisible(true);
+        dispose();
     }
 
 }
