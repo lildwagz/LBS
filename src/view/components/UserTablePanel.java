@@ -150,7 +150,7 @@ public class UserTablePanel extends JPanel {
         }
         int confirm = JOptionPane.showConfirmDialog(
                 this,
-                "Apakah Anda yakin ingin menghapus buku ini?",
+                "Apakah Anda yakin ingin menghapus user ini?",
                 "Konfirmasi Hapus",
                 JOptionPane.YES_NO_OPTION
         );
