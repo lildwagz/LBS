@@ -82,6 +82,7 @@ public class RegisterFrame extends JFrame {
                         "Success",
                         JOptionPane.INFORMATION_MESSAGE);
                 dispose();
+                new LoginFrame().setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(this,
                         "Registration failed.",

@@ -112,53 +112,59 @@ public class UserTablePanel extends JPanel {
     private void handleEditUser(ActionEvent e) {
         int selectedRow = table.getSelectedRow();
         if (selectedRow < 0) {
-            showWarningDialog("Silakan pilih user yang ingin diedit.");
+            showWarningDialog("Silakan pilih user yang akan diedit");
             return;
         }
 
         try {
-            // Ambil data dari baris yang dipilih
             int userId = (int) table.getValueAt(selectedRow, 0);
-            String username = (String) table.getValueAt(selectedRow, 1);
-            String role = (String) table.getValueAt(selectedRow, 2);
+            User existingUser = userController.getUserById(userId);
 
-            // Buat objek user dari data yang dipilih
-            User selectedUser = new User();
-            selectedUser.setId(userId);
-            selectedUser.setUsername(username);
-            selectedUser.setRole(role);
-
-            // Tampilkan dialog untuk edit user
-            UserFormDialog dialog = new UserFormDialog((JFrame) SwingUtilities.getWindowAncestor(this), selectedUser);
+            UserFormDialog dialog = new UserFormDialog(
+                    (JFrame) SwingUtilities.getWindowAncestor(this),
+                    existingUser
+            );
             dialog.setVisible(true);
 
             if (dialog.isSubmitted()) {
                 User updatedUser = dialog.getUser();
-                // Validasi manual
-                if (updatedUser.getUsername().isEmpty()) {
-                    throw new CustomException("Username tidak boleh kosong.");
-                }
-
+                updatedUser.setId(userId); // Pastikan ID tetap sama
                 userController.updateUser(updatedUser);
                 loadData(); // Refresh table
                 showSuccessDialog("User berhasil diperbarui!");
             }
-
         } catch (CustomException ex) {
-            showErrorDialog("Gagal mengedit User: " + ex.getMessage());
+            showErrorDialog("Gagal mengupdate User: " + ex.getMessage());
         }
+
     }
 
 
-// ---------------------------------------->> block kode untuk gatan
     private void handleDeleteUser(ActionEvent e) {
         int selectedRow = table.getSelectedRow();
-        if(selectedRow >= 0) {
-            int userId = (int) table.getValueAt(selectedRow, 0);
+        if(selectedRow < 0) {
             // Delete confirmation and logic
-
+            showWarningDialog("Silakan pilih Pengguna yang akan dihapus");
+            return;
 
         }
+        int confirm = JOptionPane.showConfirmDialog(
+                this,
+                "Apakah Anda yakin ingin menghapus buku ini?",
+                "Konfirmasi Hapus",
+                JOptionPane.YES_NO_OPTION
+        );
+        if (confirm == JOptionPane.YES_OPTION) {
+            try {
+                int userId = (int) table.getValueAt(selectedRow, 0);
+                userController.deleteUser(userId);
+                loadData(); // Refresh table
+                showSuccessDialog("Pengguna berhasil dihapus!");
+            } catch (CustomException ex) {
+                showErrorDialog("Gagal menghapus pengguna: " + ex.getMessage());
+            }
+        }
+
     }
 
     private void showErrorDialog(String message) {
