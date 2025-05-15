@@ -82,6 +82,26 @@ public class UserTablePanel extends JPanel {
     private void handleSearch(ActionEvent e) {
         String keyword = txtSearch.getText().trim();
         // Implement search logic
+        try{
+            DefaultTableModel model = (DefaultTableModel) table.getModel();
+            model.setRowCount(0);
+            for (User user : userController.searchUsers(keyword)){
+                if(user.getId() > 0){
+                    model.addRow(new Object[]{
+                            user.getId(),
+                            user.getUsername(),
+                            user.getRole(),
+                            user.getPassword()
+
+                    });
+                }
+
+            }
+        } catch (CustomException ex) {
+            System.out.println("Debug - error"+ex.getMessage());
+            showErrorDialog(ex.getMessage());
+        }
+
 
     }
 // ------------------------>block kode untuk iqbal fitur nambah user ---------------->
