@@ -111,10 +111,11 @@ public class UserTablePanel extends JPanel {
 
     private void handleEditUser(ActionEvent e) {
         int selectedRow = table.getSelectedRow();
-        if (selectedRow < 0) {
+        if(selectedRow < 0) {
+
             return;
         }
-        int userId = (int) table.getValueAt(selectedRow, 0);
+
 
 
     }
@@ -122,29 +123,12 @@ public class UserTablePanel extends JPanel {
 // ---------------------------------------->> block kode untuk gatan
     private void handleDeleteUser(ActionEvent e) {
         int selectedRow = table.getSelectedRow();
-        if(selectedRow <= 0) {
-            showWarningDialog("Silakan pilih Pengguna yang akan dihapus");
-            return;
+        if(selectedRow >= 0) {
+            int userId = (int) table.getValueAt(selectedRow, 0);
+            // Delete confirmation and logic
+
 
         }
-        int confirm = JOptionPane.showConfirmDialog(
-                this,
-                "Apakah Anda yakin ingin menghapus buku ini?",
-                "Konfirmasi Hapus",
-                JOptionPane.YES_NO_OPTION
-        );
-        // Delete confirmation and logic
-        if (confirm == JOptionPane.YES_OPTION) {
-            try {
-                int userId = (int) table.getValueAt(selectedRow, 0);
-                userController.deleteUser(userId);
-                loadData(); // Refresh table
-                showSuccessDialog("Pengguna berhasil dihapus!");
-            } catch (CustomException ex) {
-                showErrorDialog("Gagal menghapus pengguna: " + ex.getMessage());
-            }
-        }
-
     }
 
     private void showErrorDialog(String message) {
