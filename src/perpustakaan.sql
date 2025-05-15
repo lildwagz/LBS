@@ -36,6 +36,7 @@ CREATE TABLE `peminjaman` (
                               PRIMARY KEY (`id`),
                               KEY `user_id` (`user_id`),
                               KEY `book_id` (`book_id`),
+                              CONSTRAINT `fk_peminjaman_books` FOREIGN KEY (`book_id`) REFERENCES `books` (`id`) ON DELETE CASCADE,
                               CONSTRAINT `peminjaman_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
                               CONSTRAINT `peminjaman_ibfk_2` FOREIGN KEY (`book_id`) REFERENCES `books` (`id`)
 );
