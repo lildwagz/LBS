@@ -162,7 +162,29 @@ public class UserTablePanel extends JPanel {
 
     private void handleDeleteUser(ActionEvent e) {
 
+        int selectedRow = table.getSelectedRow();
+        if(selectedRow < 0) {
+            // Delete confirmation and logic
+            showWarningDialog("Silakan pilih Pengguna yang akan dihapus");
+            return;
+        }
+        int confirm = JOptionPane.showConfirmDialog(
+                this,
+                "Apakah Anda yakin ingin menghapus pengguna ini?",
+                "Konfirmasi Hapus",
+                JOptionPane.YES_NO_OPTION
+        );
 
+        if (confirm == JOptionPane.YES_OPTION) {
+            try {
+                int userId = (int) table.getValueAt(selectedRow, 0);
+                userController.deleteUser(userId);
+                loadData(); // Refresh table
+                showSuccessDialog("Pengguna berhasil dihapus!");
+            } catch (CustomException ex) {
+                showErrorDialog("Gagal menghapus pengguna: " + ex.getMessage());
+            }
+        }
     }
 
     private void showErrorDialog(String message) {
