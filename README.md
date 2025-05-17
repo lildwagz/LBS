@@ -2,6 +2,14 @@
 
 Sebuah aplikasi desktop untuk mengelola peminjaman buku di perpustakaan menggunakan Java Swing dan MySQL.
 
+## Unduh Aplikasi
+1. Kunjungi [halaman release](https://github.com/lildwagz/LBS/releases).
+2. Unduh file `PeminjamanBuku_v1.0.0beta.jar` 
+3. Jalankan aplikasi:
+   ```bash  
+   java -jar PeminjamanBuku_v1.0.0beta.jar   
+   ```
+   
 ## 📚 Fitur yang Tersedia
 
 ### 1. Sistem Autentikasi [ Laude fitur registrasi]
