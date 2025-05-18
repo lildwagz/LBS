@@ -116,11 +116,9 @@ public class LoginFrame extends JFrame {
 //    Kode registrasi disni laude ---------------------------->
 
     private void showRegistrationForm(ActionEvent e) {
-        // Implement registration form .. boleh di hapus ini
-        JOptionPane.showMessageDialog(this,
-                "Registration feature not implemented yet",
-                "Info",
-                JOptionPane.INFORMATION_MESSAGE);
+        RegisterFrame registerFrame = new RegisterFrame();
+        registerFrame.setVisible(true);
+        dispose();
     }
 
 }

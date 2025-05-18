@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="PeminjamanBuku:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/PeminjamanBuku_jar</output-path>
+    <root id="archive" name="PeminjamanBuku.jar">
+      <element id="module-output" name="PeminjamanBuku" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jfreechart-1.5.4.jar" path-in-jar="/" />
+      <element id="library" level="project" name="KotlinJavaRuntime" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/mysql-connector-j-9.2.0.jar" path-in-jar="/" />
+      <element id="library" level="project" name="mysql-connector-j-9.2.0" />
+      <element id="library" level="project" name="jfreechart-1.5.4" />
+    </root>
+  </artifact>
+</component>

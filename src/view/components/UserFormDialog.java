@@ -106,6 +106,7 @@ public class UserFormDialog extends JDialog {
         return user;
     }
 
+
     // Tetap sama
     public boolean isSubmitted() {
         return submitted;

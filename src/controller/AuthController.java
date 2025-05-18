@@ -24,4 +24,14 @@ public class AuthController {
             throw new CustomException("Authentication failed: " + e.getMessage());
         }
     }
+
+    public boolean register(User user) throws CustomException {
+        // Check if username already exists
+        if (userDAO.getUserByUsername(user.getUsername()) != null) {
+            throw new CustomException("Username already exists");
+        }
+
+        // Add new user
+        return userDAO.addUser(user);
+    }
 }

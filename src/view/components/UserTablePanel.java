@@ -2,6 +2,7 @@ package view.components;
 
 import controller.UserController;
 import exception.CustomException;
+import model.Book;
 import model.User;
 import util.TableHelper;
 import javax.swing.*;
@@ -19,7 +20,7 @@ public class UserTablePanel extends JPanel {
         initUI();
         loadData();
     }
-
+    // deklarasikan UI
     private void initUI() {
         setLayout(new BorderLayout());
 
@@ -81,33 +82,108 @@ public class UserTablePanel extends JPanel {
     private void handleSearch(ActionEvent e) {
         String keyword = txtSearch.getText().trim();
         // Implement search logic
+        try{
+            DefaultTableModel model = (DefaultTableModel) table.getModel();
+            model.setRowCount(0);
+            for (User user : userController.searchUsers(keyword)){
+                if(user.getId() > 0){
+                    model.addRow(new Object[]{
+                            user.getId(),
+                            user.getUsername(),
+                            user.getRole(),
+                            user.getPassword()
+
+                    });
+                }
+
+            }
+        } catch (CustomException ex) {
+            System.out.println("Debug - error"+ex.getMessage());
+            showErrorDialog(ex.getMessage());
+        }
+
 
     }
 // ------------------------>block kode untuk iqbal fitur nambah user ---------------->
-    private void handleAddUser(ActionEvent e) {
-        // Open add user dialog
+    private void handleAddUser(ActionEvent e)
+    {
+        UserFormDialog dialog = new UserFormDialog((JFrame) SwingUtilities.getWindowAncestor(this));
+        dialog.setVisible(true);
+
+        if (dialog.isSubmitted()) {
+            try {
+                User newUser = dialog.getUser();
+                // Validasi Manual
+                if(newUser.getUsername().isEmpty() || newUser.getPassword().isEmpty()) {
+                    throw new CustomException("Username harus di isi!");
+                }
+                userController.addUser(newUser);
+                loadData(); // Refresh table
+                showSuccessDialog("User berhasil ditambahkan!");
+            } catch (CustomException ex) {
+                showErrorDialog("Gagal menambahkan User: " + ex.getMessage());
+            }
+        }
+
     }
 
     // ------------------------>block kode untuk ammar fitur nambah user ---------------->
 
     private void handleEditUser(ActionEvent e) {
         int selectedRow = table.getSelectedRow();
-        if(selectedRow < 0) {
+        if (selectedRow < 0) {
+            showWarningDialog("Silakan pilih user yang akan diedit");
             return;
         }
-        int userId = (int) table.getValueAt(selectedRow, 0);
 
+        try {
+            int userId = (int) table.getValueAt(selectedRow, 0);
+            User existingUser = userController.getUserById(userId);
+
+            UserFormDialog dialog = new UserFormDialog(
+                    (JFrame) SwingUtilities.getWindowAncestor(this),
+                    existingUser
+            );
+            dialog.setVisible(true);
+
+            if (dialog.isSubmitted()) {
+                User updatedUser = dialog.getUser();
+                updatedUser.setId(userId); // Pastikan ID tetap sama
+                userController.updateUser(updatedUser);
+                loadData(); // Refresh table
+                showSuccessDialog("User berhasil diperbarui!");
+            }
+        } catch (CustomException ex) {
+            showErrorDialog("Gagal mengupdate User: " + ex.getMessage());
+        }
 
     }
 
-// ---------------------------------------->> block kode untuk gatan
+
     private void handleDeleteUser(ActionEvent e) {
+
         int selectedRow = table.getSelectedRow();
-        if(selectedRow >= 0) {
-            int userId = (int) table.getValueAt(selectedRow, 0);
+        if(selectedRow < 0) {
             // Delete confirmation and logic
+            showWarningDialog("Silakan pilih Pengguna yang akan dihapus");
+            return;
+        }
+        int confirm = JOptionPane.showConfirmDialog(
+                this,
+                "Apakah Anda yakin ingin menghapus pengguna ini?",
+                "Konfirmasi Hapus",
+                JOptionPane.YES_NO_OPTION
+        );
 
-
+        if (confirm == JOptionPane.YES_OPTION) {
+            try {
+                int userId = (int) table.getValueAt(selectedRow, 0);
+                userController.deleteUser(userId);
+                loadData(); // Refresh table
+                showSuccessDialog("Pengguna berhasil dihapus!");
+            } catch (CustomException ex) {
+                showErrorDialog("Gagal menghapus pengguna: " + ex.getMessage());
+            }
         }
     }
 

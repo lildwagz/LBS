@@ -51,7 +51,6 @@ public class ReportController {
     }
 
     public Map<String, Integer> getStatusDistribution(List<Report> data) throws CustomException {
-
         try {
             return data.stream()
                     .collect(Collectors.groupingBy(
@@ -61,8 +60,6 @@ public class ReportController {
         }catch(Exception e){
             throw new CustomException("Gagal mengambil data distribusi buku: " + e.getMessage());
         }
-
-
     }
 
 }
